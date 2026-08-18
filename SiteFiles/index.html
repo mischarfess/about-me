@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOUR NAME — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SVG noise filter -->
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </svg>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-id mono">[ PORTFOLIO ]</span>
+    <ul class="nav-links">
+      <li><a href="#work">work</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO — liminal hallway + intro -->
+  <section class="hero">
+    <div class="hallway" aria-hidden="true">
+      <svg class="hallway-svg" viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Floor tiles -->
+        <defs>
+          <pattern id="floortile" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse"
+            patternTransform="scale(1,0.5) rotate(-45) translate(450 250)">
+            <rect width="60" height="60" fill="none" stroke="#8BAFAA" stroke-width="0.4" opacity="0.35"/>
+          </pattern>
+          <!-- Ceiling grid -->
+          <pattern id="ceiling" x="0" y="0" width="80" height="40" patternUnits="userSpaceOnUse">
+            <rect width="80" height="40" fill="none" stroke="#A0C4BE" stroke-width="0.3" opacity="0.25"/>
+          </pattern>
+        </defs>
+
+        <!-- Background wash -->
+        <rect width="900" height="500" fill="#C8DDD8"/>
+
+        <!-- Ceiling plane -->
+        <polygon points="0,0 900,0 540,220 360,220" fill="#B2CECA"/>
+        <!-- Floor plane -->
+        <polygon points="0,500 900,500 540,280 360,280" fill="#9EBFBA"/>
+        <!-- Left wall -->
+        <polygon points="0,0 360,220 360,280 0,500" fill="#A8C8C2"/>
+        <!-- Right wall -->
+        <polygon points="900,0 540,220 540,280 900,500" fill="#A8C8C2"/>
+
+        <!-- Vanishing lines — ceiling -->
+        <line x1="0" y1="0" x2="450" y2="250" stroke="#7AABA4" stroke-width="0.6" opacity="0.5"/>
+        <line x1="225" y1="0" x2="450" y2="250" stroke="#7AABA4" stroke-width="0.4" opacity="0.35"/>
+        <line x1="450" y1="0" x2="450" y2="250" stroke="#7AABA4" stroke-width="0.4" opacity="0.35"/>
+        <line x1="675" y1="0" x2="450" y2="250" stroke="#7AABA4" stroke-width="0.4" opacity="0.35"/>
+        <line x1="900" y1="0" x2="450" y2="250" stroke="#7AABA4" stroke-width="0.6" opacity="0.5"/>
+
+        <!-- Vanishing lines — floor -->
+        <line x1="0" y1="500" x2="450" y2="250" stroke="#6B9F99" stroke-width="0.6" opacity="0.5"/>
+        <line x1="225" y1="500" x2="450" y2="250" stroke="#6B9F99" stroke-width="0.4" opacity="0.35"/>
+        <line x1="450" y1="500" x2="450" y2="250" stroke="#6B9F99" stroke-width="0.4" opacity="0.35"/>
+        <line x1="675" y1="500" x2="450" y2="250" stroke="#6B9F99" stroke-width="0.4" opacity="0.35"/>
+        <line x1="900" y1="500" x2="450" y2="250" stroke="#6B9F99" stroke-width="0.6" opacity="0.5"/>
+
+        <!-- Horizontal recession marks -->
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#7AABA4" stroke-width="0.3" opacity="0.2"/>
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#7AABA4" stroke-width="0.3" opacity="0.2"/>
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#7AABA4" stroke-width="0.3" opacity="0.2"/>
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#7AABA4" stroke-width="0.3" opacity="0.2"/>
+
+        <!-- Fluorescent light strips (ceiling) -->
+        <rect x="380" y="5" width="140" height="8" rx="1" fill="#D4ECEC" opacity="0.7"/>
+        <rect x="408" y="8" width="84" height="4" rx="1" fill="#E8F4F2" opacity="0.9"/>
+        <!-- Light glow -->
+        <ellipse cx="450" cy="220" rx="60" ry="12" fill="#C8E8E2" opacity="0.4"/>
+
+        <!-- Door frame in distance -->
+        <rect x="410" y="190" width="80" height="110" rx="0" fill="#B8D4CE" stroke="#7AABA4" stroke-width="0.8"/>
+        <rect x="413" y="193" width="74" height="100" rx="0" fill="#D8EEEA" opacity="0.5"/>
+        <!-- Door handle -->
+        <circle cx="478" cy="245" r="3" fill="#7AABA4" opacity="0.7"/>
+
+        <!-- Noise overlay -->
+        <rect width="900" height="500" fill="url(#noise)" opacity="0.04"/>
+
+        <!-- Subtle vignette via radial -->
+        <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+          <stop offset="0%" stop-color="transparent"/>
+          <stop offset="100%" stop-color="#0D1614" stop-opacity="0.35"/>
+        </radialGradient>
+        <rect width="900" height="500" fill="url(#vig)"/>
+      </svg>
+    </div>
+
+    <div class="hero-text">
+      <div class="hero-label mono">[ 00 — INTRODUCTION ]</div>
+      <h1 class="hero-name">YOUR<br>NAME.</h1>
+      <p class="hero-desc">Designer &amp; developer working at the intersection of systems and experience.</p>
+    </div>
+  </section>
+
+  <!-- WORK SECTION -->
+  <section id="work" class="section">
+    <div class="section-header">
+      <span class="section-label mono">[ 01 — SELECTED WORK ]</span>
+    </div>
+
+    <div class="work-grid">
+
+      <!-- Project 1 -->
+      <article class="project-card" data-index="01">
+        <div class="project-top">
+          <span class="project-num mono">01</span>
+          <span class="project-tags mono">UI / SYSTEMS</span>
+        </div>
+        <h2 class="project-title">Project Title One</h2>
+        <p class="project-desc">A short description of what this project is, the problem it solved, and what role you played. Keep it two to three sentences.</p>
+        <div class="project-footer">
+          <span class="project-year mono">2024</span>
+          <a href="#" class="project-link mono">view →</a>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card" data-index="02">
+        <div class="project-top">
+          <span class="project-num mono">02</span>
+          <span class="project-tags mono">CODE / INTERACTIVE</span>
+        </div>
+        <h2 class="project-title">Project Title Two</h2>
+        <p class="project-desc">Brief description of the second project. Mention tools, technologies, or methods that are interesting and honest about the work.</p>
+        <div class="project-footer">
+          <span class="project-year mono">2024</span>
+          <a href="#" class="project-link mono">view →</a>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card" data-index="03">
+        <div class="project-top">
+          <span class="project-num mono">03</span>
+          <span class="project-tags mono">RESEARCH / WRITING</span>
+        </div>
+        <h2 class="project-title">Project Title Three</h2>
+        <p class="project-desc">Description of a third project. You can add as many of these as you like — the grid adapts.</p>
+        <div class="project-footer">
+          <span class="project-year mono">2023</span>
+          <a href="#" class="project-link mono">view →</a>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card" data-index="04">
+        <div class="project-top">
+          <span class="project-num mono">04</span>
+          <span class="project-tags mono">VISUAL / 3D</span>
+        </div>
+        <h2 class="project-title">Project Title Four</h2>
+        <p class="project-desc">Another project slot. Delete this card or duplicate it to fit your actual body of work.</p>
+        <div class="project-footer">
+          <span class="project-year mono">2023</span>
+          <a href="#" class="project-link mono">view →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section section-about">
+    <div class="section-header">
+      <span class="section-label mono">[ 02 — ABOUT ]</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>Replace this with your actual biography. Write in first person. Be direct about what you do, where you've worked, and what you care about. Avoid "passionate about" and similar filler phrases — they communicate nothing.</p>
+        <p>A second paragraph can cover your background, where you're based, or anything specific to your practice. Keep it honest and spare.</p>
+      </div>
+      <div class="about-meta">
+        <div class="meta-block">
+          <span class="meta-label mono">CURRENTLY</span>
+          <span class="meta-value">Your current role or status</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label mono">BASED IN</span>
+          <span class="meta-value">Your city</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label mono">TOOLS</span>
+          <span class="meta-value">Figma, VS Code, etc.</span>
+        </div>
+        <div class="meta-block">
+          <span class="meta-label mono">AVAILABILITY</span>
+          <span class="meta-value">Open to freelance / full-time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section section-contact">
+    <div class="section-header">
+      <span class="section-label mono">[ 03 — CONTACT ]</span>
+    </div>
+    <div class="contact-inner">
+      <p class="contact-cta">Have a project in mind? Let's talk.</p>
+      <a href="mailto:you@example.com" class="contact-email">you@example.com</a>
+      <div class="contact-links">
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="mono">GitHub ↗</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" class="mono">LinkedIn ↗</a>
+        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener" class="mono">X / Twitter ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="mono footer-name">YOUR NAME</span>
+    <span class="mono footer-year">© <span id="year"></span></span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
